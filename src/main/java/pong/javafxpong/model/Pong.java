@@ -7,7 +7,4 @@ public class Pong {
     private double width = 1000;
     private double height = 600;
     private Options options;
-
-
-
 }

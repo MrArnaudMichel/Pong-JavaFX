@@ -1,6 +1,6 @@
 package pong.javafxpong.model;
 
-public class Player extends Entity implements Runnable {
+public class Player extends Entity {
     private Racket racket;
     private int score;
     private String name;
@@ -21,11 +21,6 @@ public class Player extends Entity implements Runnable {
     @Override
     public void resizeHeight(double factor) {
         this.racket.resizeHeight(factor);
-    }
-
-    @Override
-    public void run() {
-
     }
 
     @Override
@@ -51,5 +46,33 @@ public class Player extends Entity implements Runnable {
     @Override
     void reset(double x, double y) {
 
+    }
+
+    public Racket getRacket() {
+        return racket;
+    }
+
+    public void setRacket(Racket racket) {
+        this.racket = racket;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Side getSide() {
+        return side;
     }
 }
