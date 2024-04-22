@@ -1,4 +1,4 @@
-package pong.javafxpong.model.Entity;
+package pong.javafxpong.model.entity;
 
 import javafx.scene.paint.Color;
 import pong.javafxpong.model.Resizable;
@@ -50,5 +50,37 @@ public class Racket implements Resizable {
     public void resizeHeight(double factor) {
         this.height = this.baseHeight * factor;
         this.y = this.y * factor;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
     }
 }

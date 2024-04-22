@@ -1,7 +1,6 @@
-package pong.javafxpong.model.Entity;
+package pong.javafxpong.model.entity;
 
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 
 import java.util.concurrent.ConcurrentHashMap;
 

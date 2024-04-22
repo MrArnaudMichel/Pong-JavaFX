@@ -1,8 +1,6 @@
-package pong.javafxpong.model.Entity;
+package pong.javafxpong.model.entity;
 
 public class Ball extends Entity implements Runnable  {
-    private double x;
-    private double y;
     private double speed;
     private double baseSpeed;
     private double directionX;
@@ -14,8 +12,7 @@ public class Ball extends Entity implements Runnable  {
     private volatile boolean running = false;
 
     public Ball(double x, double y, double speed, double directionX, double directionY, double increaseSpeed, int nbBouncesBeforeSpeedIncrease) {
-        this.x = x;
-        this.y = y;
+        super(x, y, 20, 20);
         this.baseSpeed = speed;
         this.speed = speed;
         this.directionX = directionX;
