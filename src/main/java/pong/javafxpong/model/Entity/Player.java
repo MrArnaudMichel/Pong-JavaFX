@@ -1,10 +1,15 @@
-package pong.javafxpong.model;
+package pong.javafxpong.model.Entity;
+
+import javafx.scene.input.KeyCode;
+import pong.javafxpong.model.Side;
 
 public class Player extends Entity {
     private Racket racket;
     private int score;
     private String name;
     private final Side side;
+    private volatile boolean running = true;
+    private RacketMovementHandler racketMovementHandler;
 
     public Player(Racket racket, String name, Side side) {
         this.racket = racket;
@@ -25,27 +30,38 @@ public class Player extends Entity {
 
     @Override
     void awake() {
-
+        if (side == Side.LEFT) {
+            racketMovementHandler = new RacketMovementHandler(KeyCode.Z, KeyCode.S);
+        } else {
+            racketMovementHandler = new RacketMovementHandler(KeyCode.UP, KeyCode.DOWN);
+        }
     }
 
     @Override
     void start() {
-
+        running = true;
     }
 
     @Override
     void update() {
-
+        if (running) {
+            int direction = racketMovementHandler.update();
+            if (direction == -1) {
+                racket.moveUp();
+            } else if (direction == 1) {
+                racket.moveDown();
+            }
+        }
     }
 
     @Override
     void stop() {
-
+        running = false;
     }
 
     @Override
     void reset(double x, double y) {
-
+        this.racket.reset(x, y);
     }
 
     public Racket getRacket() {

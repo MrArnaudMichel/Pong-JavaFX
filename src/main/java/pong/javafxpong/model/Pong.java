@@ -1,5 +1,8 @@
 package pong.javafxpong.model;
 
+import pong.javafxpong.model.Entity.Ball;
+import pong.javafxpong.model.Entity.Player;
+
 public class Pong {
     private Ball ball;
     private Player player1;

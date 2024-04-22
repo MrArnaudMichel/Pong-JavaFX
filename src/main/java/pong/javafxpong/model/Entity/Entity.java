@@ -1,4 +1,6 @@
-package pong.javafxpong.model;
+package pong.javafxpong.model.Entity;
+
+import pong.javafxpong.model.Resizable;
 
 abstract class Entity implements Resizable {
     private double x;

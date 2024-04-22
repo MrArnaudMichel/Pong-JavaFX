@@ -1,4 +1,4 @@
-package pong.javafxpong.model;
+package pong.javafxpong.model.Entity;
 
 public class Ball extends Entity implements Runnable  {
     private double x;
