@@ -46,12 +46,13 @@ public class Ball extends Entity implements Runnable  {
 
     @Override
     void awake() {
-
+        thread = new Thread(this);
+        thread.start();
     }
 
     @Override
     void start() {
-
+        running = true;
     }
 
     @Override
@@ -68,18 +69,18 @@ public class Ball extends Entity implements Runnable  {
 
     @Override
     void stop() {
-
+        running = false;
     }
 
     @Override
-    void reset() {
-
+    void reset(double x, double y) {
+        this.x = x;
+        this.y = y;
+        speed = baseSpeed;
+        directionX = Math.random() < 0.5 ? -1 : 1;
+        directionY = Math.random() < 0.5 ? -1 : 1;
     }
 
-    @Override
-    void onCollision(Entity other) {
-
-    }
 
     @Override
     public void resizeWidth(double factor) {

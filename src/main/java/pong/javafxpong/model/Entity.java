@@ -9,7 +9,5 @@ abstract class Entity implements Resizable {
     abstract void update();
     abstract void stop();
 
-    abstract void reset();
-
-    abstract void onCollision(Entity other);
+    abstract void reset(double x, double y);
 }
