@@ -17,10 +17,13 @@
 .main-title {
     -fx-font-family: 'Ankh Sanctuary';
     -fx-font-size: 128px;
-    -fx-fill: blue;
+    -fx-text-fill: linear-gradient(to bottom, #ffffff, #444444);
 }
+
+
+
 
 @font-face {
     -fx-font-family: 'Ankh Sanctuary';
-    src: url('fonts/Ankh Sanctuary.otf');
+    src: url('pong/javafxpong/fonts/AnkhSanctuary.otf');
 }

@@ -2,7 +2,9 @@ package pong.javafxpong.view;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import org.kordamp.bootstrapfx.scene.layout.Panel;
 import pong.javafxpong.controller.MainController;
 import pong.javafxpong.model.Pong;
 
@@ -20,8 +22,14 @@ public class MainView extends StackPane {
     }
 
     private void draw() {
+        BorderPane borderPane = new BorderPane();
+
         Label mainTitle = new Label("Pong");
+        mainTitle.setId("main-title");
         mainTitle.getStyleClass().add("main-title");
-        this.getChildren().add(mainTitle);
+        borderPane.setCenter(mainTitle);
+
+
+        this.getChildren().add(borderPane);
     }
 }
