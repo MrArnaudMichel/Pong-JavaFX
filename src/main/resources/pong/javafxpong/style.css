@@ -13,3 +13,14 @@
     -fx-stroke: yellow; /* Couleur de la bordure de la raquette */
     -fx-stroke-width: 2; /* Largeur de la bordure de la raquette */
 }
+
+.main-title {
+    -fx-font-family: 'Ankh Sanctuary';
+    -fx-font-size: 128px;
+    -fx-fill: blue;
+}
+
+@font-face {
+    -fx-font-family: 'Ankh Sanctuary';
+    src: url('fonts/Ankh Sanctuary.otf');
+}
