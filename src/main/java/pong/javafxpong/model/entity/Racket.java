@@ -83,4 +83,8 @@ public class Racket implements Resizable {
     public void setHeight(double height) {
         this.height = height;
     }
+
+    public Color getColor() {
+        return color;
+    }
 }
