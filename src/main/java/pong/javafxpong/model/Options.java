@@ -9,9 +9,10 @@ public class Options {
     public double ballSpeed;
     public double ballSize;
     public double ballSpeedIncrease;
+    public int nbBouncesBeforeSpeedIncrease;
     public int scoreToWin;
 
-    public Options(double playerSpeed, double playerHeight, double playerWidth, String player1Name, String player2Name, double ballSpeed, double ballSize, double ballSpeedIncrease, int scoreToWin) {
+    public Options(double playerSpeed, double playerHeight, double playerWidth, String player1Name, String player2Name, double ballSpeed, double ballSize, double ballSpeedIncrease, int nbBouncesBeforeSpeedIncrease, int scoreToWin) {
         this.playerSpeed = playerSpeed;
         this.playerHeight = playerHeight;
         this.playerWidth = playerWidth;
@@ -20,6 +21,7 @@ public class Options {
         this.ballSpeed = ballSpeed;
         this.ballSize = ballSize;
         this.ballSpeedIncrease = ballSpeedIncrease;
+        this.nbBouncesBeforeSpeedIncrease = nbBouncesBeforeSpeedIncrease;
         this.scoreToWin = scoreToWin;
     }
 }

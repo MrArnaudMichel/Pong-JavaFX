@@ -12,11 +12,11 @@ public class Racket implements Resizable {
     private double baseHeight;
     private double width;
     private double height;
-    private int speed;
+    private double speed;
     private final Color color;
     private double factor = 1.0;
 
-    public Racket(double x, double y, double width, double height, int speed, Color color) {
+    public Racket(double x, double y, double width, double height, double speed, Color color) {
         this.baseX = x;
         this.baseY = y;
         this.baseWidth = width;

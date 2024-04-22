@@ -11,12 +11,10 @@ public class Ball extends Entity implements Runnable  {
     private Thread thread;
     private volatile boolean running = false;
 
-    public Ball(double x, double y, double speed, double directionX, double directionY, double increaseSpeed, int nbBouncesBeforeSpeedIncrease) {
-        super(x, y, 20, 20);
+    public Ball(double x, double y, double speed, double increaseSpeed, int nbBouncesBeforeSpeedIncrease) {
+        super(x, y, 10, 10);
         this.baseSpeed = speed;
         this.speed = speed;
-        this.directionX = directionX;
-        this.directionY = directionY;
         this.increaseSpeed = increaseSpeed;
         this.nbBouncesBeforeSpeedIncrease = nbBouncesBeforeSpeedIncrease;
         this.nbBounces = 0;
@@ -45,6 +43,8 @@ public class Ball extends Entity implements Runnable  {
     void awake() {
         thread = new Thread(this);
         thread.start();
+        directionX = Math.random() < 0.5 ? -1 : 1;
+        directionY = Math.random() < 0.5 ? -1 : 1;
     }
 
     @Override
@@ -70,7 +70,7 @@ public class Ball extends Entity implements Runnable  {
     }
 
     @Override
-    void reset(double x, double y) {
+    public void reset(double x, double y) {
         this.x = x;
         this.y = y;
         speed = baseSpeed;

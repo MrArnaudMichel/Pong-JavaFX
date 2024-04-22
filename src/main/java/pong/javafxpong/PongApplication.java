@@ -4,6 +4,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pong.javafxpong.controller.*;
+import pong.javafxpong.model.*;
+import pong.javafxpong.view.*;
 
 import java.io.IOException;
 
