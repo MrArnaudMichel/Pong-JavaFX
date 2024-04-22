@@ -1,5 +1,7 @@
 package pong.javafxpong.model.entity;
 
+import javafx.scene.paint.Paint;
+
 public class Ball extends Entity implements Runnable  {
     private double speed;
     private double baseSpeed;
@@ -48,12 +50,12 @@ public class Ball extends Entity implements Runnable  {
     }
 
     @Override
-    void start() {
+    public void start() {
         running = true;
     }
 
     @Override
-    void update() {
+    public void update() {
         // Increase speed after a certain number of bounces
         if (nbBounces >= nbBouncesBeforeSpeedIncrease) {
             speed += increaseSpeed;
@@ -65,7 +67,7 @@ public class Ball extends Entity implements Runnable  {
     }
 
     @Override
-    void stop() {
+    public void stop() {
         running = false;
     }
 
@@ -87,5 +89,17 @@ public class Ball extends Entity implements Runnable  {
     @Override
     public void resizeHeight(double factor) {
         this.y *= factor;
+    }
+
+    public Paint getColor() {
+        return Paint.valueOf("#FFFFFF");
+    }
+
+    public double getWidth() {
+        return 10;
+    }
+
+    public double getHeight() {
+        return 10;
     }
 }

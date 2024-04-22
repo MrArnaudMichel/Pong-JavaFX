@@ -41,13 +41,13 @@ public class Player extends Entity implements Runnable {
     }
 
     @Override
-    void start() {
+    public void start() {
         running = true;
         thread.start();
     }
 
     @Override
-    void update() {
+    public void update() {
         int direction = racketMovementHandler.update();
         if (direction == -1) {
             racket.moveUp();
@@ -58,7 +58,7 @@ public class Player extends Entity implements Runnable {
     }
 
     @Override
-    void stop() {
+    public void stop() {
         running = false;
     }
 

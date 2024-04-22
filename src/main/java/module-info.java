@@ -10,6 +10,7 @@ module pong.javafxpong {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires jdk.javadoc;
 
     opens pong.javafxpong to javafx.fxml;
     exports pong.javafxpong;

@@ -42,4 +42,40 @@ public class Pong {
         player1.getRacket().reset(50, height / 2);
         player2.getRacket().reset(width - 50, height / 2);
     }
+
+    public Options GetOptions() {
+        return options;
+    }
+
+    public Ball getBall() {
+        return ball;
+    }
+
+    public Player getPlayer1() {
+        return player1;
+    }
+
+    public Player getPlayer2() {
+        return player2;
+    }
+
+    public void startGame() {
+        ball.start();
+        player1.start();
+        player2.start();
+    }
+
+    public void stopGame() {
+        ball.stop();
+        player1.stop();
+        player2.stop();
+    }
+
+public void update() {
+        ball.update();
+        player1.update();
+        player2.update();
+    }
+
+
 }

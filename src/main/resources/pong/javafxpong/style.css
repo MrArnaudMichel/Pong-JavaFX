@@ -3,15 +3,17 @@
 }
 
 .ball {
-    -fx-fill: red; /* Couleur de remplissage de la balle */
-    -fx-stroke: white; /* Couleur de la bordure de la balle */
-    -fx-stroke-width: 2; /* Largeur de la bordure de la balle */
+    -fx-fill: red;
+/*    Add red light effect around the ball*/
+    -fx-effect: dropshadow(three-pass-box, red, 20, 0.2, 0, 0);
+
 }
 
 .racket {
-    -fx-fill: white; /* Couleur de remplissage de la raquette */
-    -fx-stroke: yellow; /* Couleur de la bordure de la raquette */
-    -fx-stroke-width: 2; /* Largeur de la bordure de la raquette */
+    -fx-fill: white;
+    -fx-stroke: yellow;
+    -fx-stroke-width: 2;
+    -fx-effect: dropshadow(three-pass-box, white, 5, 0, 0, 0);
 }
 
 .main-title {
@@ -20,6 +22,15 @@
     -fx-text-fill: linear-gradient(to bottom, #ffffff, #444444);
 }
 
+.settings {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+}
+
+.settings-options {
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
 
 
 
