@@ -40,12 +40,6 @@ public class RacketMovementHandler {
 
 
     int update() {
-        // affiche tout les touches appuyées
-        keys.forEach((key, value) -> {
-            if (value) {
-                System.out.println(key);
-            }
-        });
         if (keys.getOrDefault(up, false)) {
             return -1;
         }
