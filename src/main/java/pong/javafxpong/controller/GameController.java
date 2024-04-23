@@ -1,7 +1,10 @@
 package pong.javafxpong.controller;
 
+import javafx.application.Platform;
+import javafx.scene.Scene;
 import pong.javafxpong.model.Pong;
 import pong.javafxpong.model.entity.CollisionDetector;
+import pong.javafxpong.view.GameOverView;
 import pong.javafxpong.view.GameView;
 
 public class GameController {
@@ -16,22 +19,19 @@ public class GameController {
     }
 
     public void startGame() {
-        pong.startGame();
         gameStarted = true;
-        new Thread(() -> {
+        Thread thread = new Thread(() -> {
             while (gameStarted) {
-                if (!isPaused) {
-                    //pong.update();
-                    update();
-                    gameView.update();
-                }
+                update();
+                gameView.update();
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-        }).start();
+        });
+        thread.start();
     }
 
     public void update() {
@@ -46,9 +46,38 @@ public class GameController {
             pong.getBall().setDirectionY(-1);
         }
         if (pong.getBall().getX() <= 0) {
-            pong.getBall().setDirectionX(1);
+            pong.scorePlayer2();
+            pong.reset();
+            checkEndGame();
+            displayMessage("Player 2 scores!");
         } else if (pong.getBall().getX() >= 1000) {
-            pong.getBall().setDirectionX(-1);
+            pong.scorePlayer1();
+            pong.reset();
+            checkEndGame();
+            displayMessage("Player 1 scores!");
+        }
+    }
+
+    public void displayMessage(String s) {
+        Platform.runLater(() -> gameView.displayMessage(s));
+    }
+
+
+    private void checkEndGame() {
+        if (pong.getScores()[0] >= pong.getOptions().scoreToWin) {
+            Scene scene = gameView.getScene();
+            Platform.runLater(() -> {
+                gameStarted = false;
+                pong.stopGame();
+                scene.setRoot(new GameOverView(pong));
+            });
+        } else if (pong.getScores()[1] >= pong.getOptions().scoreToWin) {
+            Scene scene = gameView.getScene();
+            Platform.runLater(() -> {
+                gameStarted = false;
+                pong.stopGame();
+                scene.setRoot(new GameOverView(pong));
+            });
         }
     }
 }

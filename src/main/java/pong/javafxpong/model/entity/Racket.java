@@ -5,8 +5,8 @@ import pong.javafxpong.model.Resizable;
 
 public class Racket implements Resizable {
     private final Color color;
-    private final double baseX;
-    private final double baseY;
+    private double baseX;
+    private double baseY;
     private double x;
     private double y;
     private final double baseWidth;
@@ -14,7 +14,8 @@ public class Racket implements Resizable {
     private double width;
     private double height;
     private double speed;
-    private final double factor = 1.0;
+    private double factorX = 1.0;
+    private double factorY = 1.0;
 
     public Racket(double x, double y, double width, double height, double speed, Color color) {
         this.baseX = x;
@@ -28,8 +29,8 @@ public class Racket implements Resizable {
     }
 
     public void reset(double x, double y) {
-        this.x = this.baseX * factor;
-        this.y = this.baseY * factor;
+        this.x = this.baseX * factorX;
+        this.y = this.baseY * factorY;
     }
 
     public void moveUp() {
@@ -42,14 +43,18 @@ public class Racket implements Resizable {
 
     @Override
     public void resizeWidth(double factor) {
-        this.width = this.baseWidth * factor;
+//        this.width = this.baseWidth * factor;
         this.x = this.x * factor;
+        this.baseX = this.baseX * factor;
+        this.factorX = factor;
     }
 
     @Override
     public void resizeHeight(double factor) {
-        this.height = this.baseHeight * factor;
+//        this.height = this.baseHeight * factor;
         this.y = this.y * factor;
+        this.baseY = this.baseY * factor;
+        this.factorY = factor;
     }
 
     public double getX() {

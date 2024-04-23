@@ -3,23 +3,16 @@
 }
 
 .ball {
-    -fx-fill: red;
-/*    Add red light effect around the ball*/
-    -fx-effect: dropshadow(three-pass-box, red, 20, 0.2, 0, 0);
+    -fx-fill: white;
+    -fx-effect: dropshadow(three-pass-box, white, 5, 0, 0, 0);
 
 }
 
 .racket {
-    -fx-fill: white;
-    -fx-stroke: yellow;
+    -fx-fill: linear-gradient(to bottom, blue, red);
+    -fx-stroke: white;
     -fx-stroke-width: 2;
     -fx-effect: dropshadow(three-pass-box, white, 5, 0, 0, 0);
-}
-
-.main-title {
-    -fx-font-family: 'Ankh Sanctuary';
-    -fx-font-size: 128px;
-    -fx-text-fill: linear-gradient(to bottom, #ffffff, #444444);
 }
 
 .settings {
@@ -32,6 +25,152 @@
     -fx-vgap: 10;
 }
 
+.label {
+    -fx-font-family: 'Ankh Sanctuary';
+    -fx-font-size: 24px;
+    -fx-text-fill: white;
+}
+
+.button {
+    -fx-font-family: 'Ankh Sanctuary';
+    -fx-font-size: 24px;
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(to bottom, #666666, #000000);
+    -fx-background-radius: 10;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 10 20 10 20;
+    -fx-stroke: white;
+    -fx-stroke-width: 2;
+}
+
+.main-title {
+    -fx-font-family: 'Ankh Sanctuary';
+    -fx-font-size: 128px;
+    -fx-text-fill: linear-gradient(to bottom, blue, red);
+    -fx-effect: dropshadow(three-pass-box, white, 8, 0, 0, 0);
+}
+
+.button-start {
+    -fx-font-size: 48px;
+    -fx-padding: 20 40 20 40;
+    -fx-text-fill: linear-gradient(to bottom, blue, red);
+}
+
+.slider {
+    -fx-font-family: 'Ankh Sanctuary';
+    -fx-font-size: 24px;
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(to bottom, #666666, #000000);
+    -fx-background-radius: 10;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 10 20 10 20;
+    -fx-effect: dropshadow(three-pass-box, black, 10, 0.2, 0, 0);
+}
+
+.slider .track {
+    -fx-background-color: linear-gradient(to bottom, #666666, #000000);
+    -fx-background-radius: 10;
+    -fx-background-insets: 0, 1, 2;
+}
+
+.slider .thumb {
+    -fx-background-radius: 10;
+    -fx-background-insets: 0, 1, 2;
+}
+
+.slider .thumb:hover {
+    -fx-background-color: linear-gradient(to bottom, #666666, #000000);
+    -fx-background-radius: 10;
+    -fx-background-insets: 0, 1, 2;
+}
+
+.tab {
+    -fx-font-family: 'Ankh Sanctuary';
+    -fx-font-size: 24px;
+    -fx-background-color: linear-gradient(to bottom, #666666, #000000);
+    -fx-background-radius: 10;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 10 20 10 20;
+    -fx-effect: dropshadow(three-pass-box, black, 10, 0.2, 0, 0);
+    -fx-text-fill: white;
+    -fx-text-fill: white;
+}
+
+.tab-pane .tab-header-area .tab {
+    -fx-background-color: linear-gradient(to bottom, #666666, #000000);
+}
+
+.tab-pane {
+    -fx-background-color: black;
+}
+
+.tab-pane .tab-header-area {
+    -fx-background-color: black !important;
+}
+
+
+.tab-pane .tab-header-area .tab:selected .tab-label {
+    -fx-text-fill: linear-gradient(to bottom, blue, red);
+}
+
+
+.tab-pane .tab-header-area .tab .tab-label {
+    -fx-text-fill: white;
+}
+
+.text-area {
+    -fx-font-family: 'Ankh Sanctuary';
+    -fx-font-size: 24px;
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(to bottom, #666666, #000000);
+    -fx-background-radius: 10;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 10 20 10 20;
+    -fx-effect: dropshadow(three-pass-box, black, 10, 0.2, 0, 0);
+}
+
+.text-field {
+    -fx-font-family: 'Ankh Sanctuary';
+    -fx-font-size: 24px;
+    -fx-text-fill: white;
+    -fx-background-color: #666666;
+    -fx-background-radius: 10;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 10 20 10 20;
+    -fx-effect: dropshadow(three-pass-box, black, 10, 0.2, 0, 0);
+}
+
+.text-field .text {
+    -fx-text-fill: white;
+}
+
+.text-field .prompt-text {
+    -fx-text-fill: white;
+}
+
+.vbox {
+    -fx-padding: 10;
+    -fx-spacing: 10;
+}
+
+.score-label {
+    -fx-font-family: 'Ankh Sanctuary';
+    -fx-font-size: 24px;
+    -fx-text-fill: linear-gradient(to bottom, blue, red);
+}
+
+.score-winners {
+    -fx-font-family: 'Ankh Sanctuary';
+    -fx-font-size: 48px;
+    -fx-text-fill: white;
+}
+
+.game-over-label {
+    -fx-font-family: 'Ankh Sanctuary';
+    -fx-font-size: 64px;
+    -fx-text-fill: linear-gradient(to bottom, blue, red);
+
+}
 
 
 @font-face {

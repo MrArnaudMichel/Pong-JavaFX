@@ -18,5 +18,6 @@ public class MainController {
     public void startGame() {
         Scene scene = mainView.getScene();
         scene.setRoot(new GameView(pong));
+        pong.startGame();
     }
 }

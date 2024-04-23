@@ -14,7 +14,6 @@ public class RacketView extends Rectangle implements ViewComponent {
         this.setHeight(racket.getHeight());
         this.setFill(racket.getColor());
         this.getStyleClass().add("racket");
-        System.out.println(this);
     }
 
     public void updatePosition() {

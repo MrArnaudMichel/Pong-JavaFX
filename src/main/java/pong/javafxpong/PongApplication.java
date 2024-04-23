@@ -21,10 +21,15 @@ public class PongApplication extends Application {
         MainView mainView = new MainView(pong);
         Scene scene = new Scene(mainView, 1000, 600);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/pong/javafxpong/style.css")).toExternalForm());
+
         scene.addEventHandler(KeyEvent.KEY_PRESSED, pong.getPlayer1().racketMovementHandler::handleKeyPressed);
         scene.addEventHandler(KeyEvent.KEY_RELEASED, pong.getPlayer1().racketMovementHandler::handleKeyReleased);
         scene.addEventHandler(KeyEvent.KEY_PRESSED, pong.getPlayer2().racketMovementHandler::handleKeyPressed);
         scene.addEventHandler(KeyEvent.KEY_RELEASED, pong.getPlayer2().racketMovementHandler::handleKeyReleased);
+
+        stage.widthProperty().addListener((obs) -> pong.setWidth(stage.getWidth()));
+
+
         stage.setScene(scene);
         stage.setTitle("Pong");
         stage.show();

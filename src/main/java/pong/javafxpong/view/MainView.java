@@ -28,6 +28,7 @@ public class MainView extends StackPane {
 
         Label mainTitle = new Label("Pong");
         mainTitle.setId("main-title");
+        mainTitle.getStyleClass().add("label");
         mainTitle.getStyleClass().add("main-title");
         borderPane.setCenter(mainTitle);
 
@@ -43,6 +44,7 @@ public class MainView extends StackPane {
 
 
         Button startButton = new Button("Start");
+        startButton.getStyleClass().add("button-start");
         startButton.setOnAction(e -> {
             mainController.startGame();
         });
@@ -52,5 +54,9 @@ public class MainView extends StackPane {
 
 
         this.getChildren().add(borderPane);
+    }
+
+    public MainController getMainController() {
+        return mainController;
     }
 }

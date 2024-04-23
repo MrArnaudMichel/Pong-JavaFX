@@ -4,7 +4,7 @@ import javafx.scene.paint.Paint;
 
 public class Ball extends Entity implements Runnable {
     private double speed;
-    private final double baseSpeed;
+    private double baseSpeed;
     private double directionX;
     private double directionY;
     private double increaseSpeed;
@@ -20,6 +20,7 @@ public class Ball extends Entity implements Runnable {
         this.increaseSpeed = increaseSpeed;
         this.nbBouncesBeforeSpeedIncrease = nbBouncesBeforeSpeedIncrease;
         this.nbBounces = 0;
+        thread = new Thread(this);
         awake();
     }
 
@@ -45,13 +46,13 @@ public class Ball extends Entity implements Runnable {
     void awake() {
         directionX = Math.random() < 0.5 ? -1 : 1;
         directionY = Math.random() < 0.5 ? -1 : 1;
+        reset(x, y);
     }
 
     @Override
     public void start() {
-        running = true;
-        thread = new Thread(this);
         thread.start();
+        running = true;
     }
 
     @Override
@@ -124,6 +125,7 @@ public class Ball extends Entity implements Runnable {
     }
 
     public void setSpeed(double speed) {
+        this.baseSpeed = speed;
         this.speed = speed;
     }
 

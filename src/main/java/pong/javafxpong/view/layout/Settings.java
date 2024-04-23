@@ -33,7 +33,6 @@ public class Settings extends TabPane {
 
         this.getTabs().addAll(tabs);
 
-
         show();
     }
 

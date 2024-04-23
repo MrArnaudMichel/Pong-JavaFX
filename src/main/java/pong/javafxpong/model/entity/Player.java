@@ -1,5 +1,6 @@
 package pong.javafxpong.model.entity;
 
+import javafx.scene.control.skin.TableHeaderRow;
 import javafx.scene.input.KeyCode;
 import pong.javafxpong.model.Side;
 
@@ -9,8 +10,8 @@ public class Player extends Entity implements Runnable {
     private Racket racket;
     private int score;
     private String name;
-    private volatile boolean running = true;
-    private Thread thread;
+    public volatile boolean running = true;
+    public Thread thread;
 
     public Player(Racket racket, String name, Side side) {
         super(racket.getX(), racket.getY(), racket.getWidth(), racket.getHeight());
@@ -40,6 +41,7 @@ public class Player extends Entity implements Runnable {
             racketMovementHandler = new RacketMovementHandler(KeyCode.UP, KeyCode.DOWN);
         }
         thread = new Thread(this);
+        start();
     }
 
     @Override
@@ -71,8 +73,11 @@ public class Player extends Entity implements Runnable {
 
     @Override
     public void run() {
-        while (running) {
-            update();
+        while (true) {
+            if (running) {
+                update();
+            }
+
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {

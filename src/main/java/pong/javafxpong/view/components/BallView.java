@@ -10,7 +10,6 @@ public class BallView extends Circle implements ViewComponent {
         super(ball.getX(), ball.getY(), ball.getWidth(), ball.getColor());
         this.ball = ball;
         this.getStyleClass().add("ball");
-        System.out.println(this);
 
     }
 
