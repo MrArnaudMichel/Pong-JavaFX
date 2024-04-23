@@ -4,12 +4,12 @@ import javafx.scene.input.KeyCode;
 import pong.javafxpong.model.Side;
 
 public class Player extends Entity implements Runnable {
+    private final Side side;
+    public RacketMovementHandler racketMovementHandler;
     private Racket racket;
     private int score;
     private String name;
-    private final Side side;
     private volatile boolean running = true;
-    public RacketMovementHandler racketMovementHandler;
     private Thread thread;
 
     public Player(Racket racket, String name, Side side) {

@@ -4,13 +4,17 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import pong.javafxpong.model.*;
-import pong.javafxpong.view.*;
+import pong.javafxpong.model.Pong;
+import pong.javafxpong.view.MainView;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class PongApplication extends Application {
+    public static void main(String[] args) {
+        launch();
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         Pong pong = new Pong(1000, 600);
@@ -24,9 +28,5 @@ public class PongApplication extends Application {
         stage.setScene(scene);
         stage.setTitle("Pong");
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }

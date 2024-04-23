@@ -1,6 +1,6 @@
 package pong.javafxpong.view.layout;
-import javafx.scene.control.Hyperlink;
 
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 

@@ -3,12 +3,10 @@ package pong.javafxpong.view.components;
 import javafx.scene.shape.Rectangle;
 import pong.javafxpong.model.entity.Racket;
 
-public class RacketView extends Rectangle implements ViewComponent
-{
+public class RacketView extends Rectangle implements ViewComponent {
     private final Racket racket;
 
-    public RacketView(Racket racket)
-    {
+    public RacketView(Racket racket) {
         this.racket = racket;
         this.setX(racket.getX());
         this.setY(racket.getY());
@@ -19,8 +17,7 @@ public class RacketView extends Rectangle implements ViewComponent
         System.out.println(this);
     }
 
-    public void updatePosition()
-    {
+    public void updatePosition() {
         this.setX(racket.getX());
         this.setY(racket.getY());
         this.setWidth(racket.getWidth());

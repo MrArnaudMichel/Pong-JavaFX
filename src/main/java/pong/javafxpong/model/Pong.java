@@ -11,7 +11,7 @@ public class Pong {
     private final Player player2;
     private double width = 1000;
     private double height = 600;
-    private Options options;
+    private final Options options;
 
     public Pong(int width, int height) {
         this.options = new Options(

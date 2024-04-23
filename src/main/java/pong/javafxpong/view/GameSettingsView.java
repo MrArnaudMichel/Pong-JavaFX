@@ -1,14 +1,11 @@
 package pong.javafxpong.view;
 
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import pong.javafxpong.model.Options;
 import pong.javafxpong.model.Pong;
 import pong.javafxpong.view.components.RacketView;
-import pong.javafxpong.model.entity.Racket;
 
 public class GameSettingsView extends TabPane {
     public GameSettingsView(Pong pong) {

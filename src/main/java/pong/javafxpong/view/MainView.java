@@ -4,18 +4,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import org.kordamp.bootstrapfx.scene.layout.Panel;
 import pong.javafxpong.controller.MainController;
 import pong.javafxpong.model.Pong;
 import pong.javafxpong.view.layout.Settings;
 
 public class MainView extends StackPane {
     private final Pong pong;
-    private MainController mainController;
     private final Settings settings;
+    private final MainController mainController;
 
     public MainView(Pong pong) {
         super();
@@ -51,7 +49,6 @@ public class MainView extends StackPane {
         vBox.getChildren().add(startButton);
 
         borderPane.setBottom(vBox);
-
 
 
         this.getChildren().add(borderPane);

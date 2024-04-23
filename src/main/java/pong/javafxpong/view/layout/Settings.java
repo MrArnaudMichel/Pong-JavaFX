@@ -8,14 +8,12 @@ import pong.javafxpong.model.Pong;
 import pong.javafxpong.view.GameSettingsView;
 import pong.javafxpong.view.MainView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Settings extends TabPane
-{
+public class Settings extends TabPane {
     ArrayList<Tab> tabs = new ArrayList<>();
-    public Settings(Pong pong)
-    {
+
+    public Settings(Pong pong) {
         super();
         this.getStyleClass().add("settings");
         this.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
@@ -39,18 +37,15 @@ public class Settings extends TabPane
         show();
     }
 
-    public void show()
-    {
+    public void show() {
         this.setVisible(true);
     }
 
-    public void hide()
-    {
+    public void hide() {
         this.setVisible(false);
     }
 
-    public void returnToMain()
-    {
+    public void returnToMain() {
         this.setVisible(false);
     }
 }

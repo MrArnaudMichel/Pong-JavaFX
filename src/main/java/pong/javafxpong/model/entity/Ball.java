@@ -2,9 +2,9 @@ package pong.javafxpong.model.entity;
 
 import javafx.scene.paint.Paint;
 
-public class Ball extends Entity implements Runnable  {
+public class Ball extends Entity implements Runnable {
     private double speed;
-    private double baseSpeed;
+    private final double baseSpeed;
     private double directionX;
     private double directionY;
     private double increaseSpeed;

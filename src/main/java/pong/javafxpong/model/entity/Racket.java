@@ -4,17 +4,17 @@ import javafx.scene.paint.Color;
 import pong.javafxpong.model.Resizable;
 
 public class Racket implements Resizable {
-    private double baseX;
-    private double baseY;
+    private final Color color;
+    private final double baseX;
+    private final double baseY;
     private double x;
     private double y;
-    private double baseWidth;
+    private final double baseWidth;
     private double baseHeight;
     private double width;
     private double height;
     private double speed;
-    private final Color color;
-    private double factor = 1.0;
+    private final double factor = 1.0;
 
     public Racket(double x, double y, double width, double height, double speed, Color color) {
         this.baseX = x;
