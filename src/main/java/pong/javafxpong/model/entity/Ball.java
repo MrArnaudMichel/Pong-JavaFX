@@ -43,8 +43,6 @@ public class Ball extends Entity implements Runnable  {
 
     @Override
     void awake() {
-        thread = new Thread(this);
-        thread.start();
         directionX = Math.random() < 0.5 ? -1 : 1;
         directionY = Math.random() < 0.5 ? -1 : 1;
     }
@@ -52,18 +50,24 @@ public class Ball extends Entity implements Runnable  {
     @Override
     public void start() {
         running = true;
+        thread = new Thread(this);
+        thread.start();
     }
 
     @Override
     public void update() {
-        // Increase speed after a certain number of bounces
-        if (nbBounces >= nbBouncesBeforeSpeedIncrease) {
-            speed += increaseSpeed;
-            nbBounces = 0;
-        }
+
         // Move the ball
         x += speed * directionX;
         y += speed * directionY;
+    }
+
+    public void bounce() {
+        nbBounces++;
+        // Increase speed after a certain number of bounces
+        if (nbBounces >= nbBouncesBeforeSpeedIncrease) {
+            speed += increaseSpeed;
+        }
     }
 
     @Override
@@ -101,5 +105,33 @@ public class Ball extends Entity implements Runnable  {
 
     public double getHeight() {
         return 10;
+    }
+
+    public double getDirectionY() {
+        return directionY;
+    }
+
+    public void setDirectionY(double directionY) {
+        this.directionY = directionY;
+    }
+
+    public double getDirectionX() {
+        return directionX;
+    }
+
+    public void setDirectionX(double directionX) {
+        this.directionX = directionX;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
+
+    public void setIncreaseSpeed(double increaseSpeed) {
+        this.increaseSpeed = increaseSpeed;
+    }
+
+    public void setNbBouncesBeforeSpeedIncrease(int nbBouncesBeforeSpeedIncrease) {
+        this.nbBouncesBeforeSpeedIncrease = nbBouncesBeforeSpeedIncrease;
     }
 }

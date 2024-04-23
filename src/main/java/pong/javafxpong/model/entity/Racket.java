@@ -87,4 +87,8 @@ public class Racket implements Resizable {
     public Color getColor() {
         return color;
     }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
 }

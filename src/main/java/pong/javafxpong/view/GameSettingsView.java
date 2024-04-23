@@ -32,6 +32,7 @@ public class GameSettingsView extends TabPane {
             options.player1Name = player1Name.getText();
             options.player2Name = player2Name.getText();
         });
+        playersSettings.add(saveButton, 0, 2);
         playersTab.setContent(playersSettings);
         this.getTabs().add(playersTab);
 
@@ -60,11 +61,12 @@ public class GameSettingsView extends TabPane {
 
         racketsSettings.add(racketWidth, 0, 1);
         racketsSettings.add(racketHeight, 1, 1);
-        racketsSettings.add(saveButton, 0, 2);
-saveButton.setOnAction(e -> {
+        Button saveButton2 = new Button("Save");
+        saveButton2.setOnAction(e -> {
             options.playerWidth = racketWidth.getValue();
             options.playerHeight = racketHeight.getValue();
         });
+        racketsSettings.add(saveButton2, 0, 2);
 
         racketsTab.setContent(racketsSettings);
         this.getTabs().add(racketsTab);
@@ -82,12 +84,13 @@ saveButton.setOnAction(e -> {
 
         ballSettings.add(ballSpeed, 0, 1);
         ballSettings.add(ballIncreaseSpeed, 1, 1);
-        saveButton.setOnAction(e -> {
+        Button saveButton3 = new Button("Save");
+        saveButton3.setOnAction(e -> {
             options.ballSpeed = ballSpeed.getValue();
             options.ballSpeedIncrease = ballIncreaseSpeed.getValue() + 1;
         });
 
-        ballSettings.add(saveButton, 0, 2);
+        ballSettings.add(saveButton3, 0, 2);
 
 
         ballTab.setContent(ballSettings);

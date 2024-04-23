@@ -8,6 +8,9 @@ import pong.javafxpong.view.MainView;
 public class MainController {
     private final MainView mainView;
     private final Pong pong;
+
+
+
     public MainController(MainView mainView, Pong pong) {
         this.mainView = mainView;
         this.pong = pong;

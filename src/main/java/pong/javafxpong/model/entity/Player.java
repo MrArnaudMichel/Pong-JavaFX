@@ -9,7 +9,7 @@ public class Player extends Entity implements Runnable {
     private String name;
     private final Side side;
     private volatile boolean running = true;
-    private RacketMovementHandler racketMovementHandler;
+    public RacketMovementHandler racketMovementHandler;
     private Thread thread;
 
     public Player(Racket racket, String name, Side side) {
@@ -18,6 +18,8 @@ public class Player extends Entity implements Runnable {
         this.name = name;
         this.score = 0;
         this.side = side;
+
+        awake();
     }
 
     @Override

@@ -60,21 +60,28 @@ public class Pong {
     }
 
     public void startGame() {
+        updateComponents();
         ball.start();
         player1.start();
         player2.start();
+    }
+
+    private void updateComponents() {
+        ball.setSpeed(options.ballSpeed);
+        ball.setIncreaseSpeed(options.ballSpeedIncrease);
+        ball.setNbBouncesBeforeSpeedIncrease(options.nbBouncesBeforeSpeedIncrease);
+        player1.getRacket().setWidth(options.playerWidth);
+        player1.getRacket().setHeight(options.playerHeight);
+        player1.getRacket().setSpeed(options.playerSpeed);
+        player2.getRacket().setWidth(options.playerWidth);
+        player2.getRacket().setHeight(options.playerHeight);
+        player2.getRacket().setSpeed(options.playerSpeed);
     }
 
     public void stopGame() {
         ball.stop();
         player1.stop();
         player2.stop();
-    }
-
-public void update() {
-        ball.update();
-        player1.update();
-        player2.update();
     }
 
 

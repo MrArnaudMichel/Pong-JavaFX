@@ -17,5 +17,6 @@ public class BallView extends Circle implements ViewComponent {
     public void updatePosition() {
         this.setCenterX(ball.getX());
         this.setCenterY(ball.getY());
+        this.setRadius(ball.getWidth());
     }
 }
