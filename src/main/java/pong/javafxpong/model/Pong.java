@@ -1,11 +1,13 @@
 package pong.javafxpong.model;
 
 import javafx.scene.paint.Color;
+import pong.javafxpong.controller.GameController;
 import pong.javafxpong.model.entity.Ball;
 import pong.javafxpong.model.entity.Player;
 import pong.javafxpong.model.entity.Racket;
 
 public class Pong {
+    private GameController gameController;
     private Ball ball;
     private Player player1;
     private Player player2;
@@ -14,7 +16,7 @@ public class Pong {
     private int[] scores = new int[2];
     private final Options options;
 
-    public Pong(int width, int height) {
+    public Pong(int width, int height, GameController gameController) {
         this.options = new Options(
                 8,
                 100,
@@ -36,6 +38,7 @@ public class Pong {
         this.width = width;
         this.height = height;
         reset();
+        this.gameController = gameController;
     }
 
     public void reset() {
@@ -94,10 +97,14 @@ public class Pong {
 
     public void scorePlayer1() {
         scores[0]++;
+        player1.setScore(scores[0]);
+        player2.setScore(scores[1]);
     }
 
     public void scorePlayer2() {
         scores[1]++;
+        player1.setScore(scores[0]);
+        player2.setScore(scores[1]);
     }
 
     public void setWidth(double width) {
@@ -140,5 +147,9 @@ public class Pong {
 
     public String getPlayer2Score() {
         return String.valueOf(scores[1]);
+    }
+
+    public GameController getGameController() {
+        return gameController;
     }
 }

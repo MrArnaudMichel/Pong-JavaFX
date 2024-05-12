@@ -8,8 +8,8 @@ import pong.javafxpong.view.GameOverView;
 import pong.javafxpong.view.GameView;
 
 public class GameController {
-    private final GameView gameView;
-    private final Pong pong;
+    private GameView gameView;
+    private Pong pong;
     private boolean gameStarted = false;
     private boolean isPaused;
 
@@ -17,6 +17,17 @@ public class GameController {
         this.gameView = gameView;
         this.pong = pong;
     }
+
+    public GameController() {
+        this.gameView = null;
+        this.pong = null;
+    }
+
+    public void setGameController(GameView gameView, Pong pong) {
+        this.gameView = gameView;
+        this.pong = pong;
+    }
+
 
     public void startGame() {
         gameStarted = true;
@@ -80,4 +91,16 @@ public class GameController {
             });
         }
     }
+
+    public void pauseGame() {
+        if (!gameStarted){
+            this.startGame();
+        }
+        // Stop the game loop
+        gameStarted = false;
+        // Stop the ball and rackets
+        assert pong != null;
+        pong.stopGame();
+    }
+
 }

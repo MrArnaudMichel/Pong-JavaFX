@@ -20,17 +20,23 @@ public class GameView extends BorderPane {
     private final BallView ballView;
     private final GameController gameController;
     private final StackPane stackPane;
+    private Label score;
 
     public GameView(Pong pong) {
         super();
         this.pong = pong;
-        gameController = new GameController(this, pong);
+        gameController = pong.getGameController();
+        gameController.setGameController(this, pong);
         racketView1 = new RacketView(pong.getPlayer1().getRacket());
         racketView2 = new RacketView(pong.getPlayer2().getRacket());
         ballView = new BallView(pong.getBall());
         this.getChildren().addAll(racketView1, racketView2, ballView);
         stackPane = new StackPane();
+        score = new Label("0 - 0");
+        score.setAlignment(Pos.CENTER);
+        score.setStyle("-fx-font-size: 50px; -fx-text-fill: white; -fx-font-weight: bold;");
 
+        this.setBottom(score);
         this.setCenter(stackPane);
         gameController.startGame();
 
@@ -51,8 +57,6 @@ public class GameView extends BorderPane {
             stackPane.getChildren().remove(label);
         }));
         timeline.play();
-
-
+        score.setText(pong.getPlayer1().getScore() + " - " + pong.getPlayer2().getScore());
     }
-
 }
