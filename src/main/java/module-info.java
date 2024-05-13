@@ -11,6 +11,7 @@ module pong.javafxpong {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires jdk.javadoc;
+    requires java.sql;
 
     opens pong.javafxpong to javafx.fxml;
     exports pong.javafxpong;

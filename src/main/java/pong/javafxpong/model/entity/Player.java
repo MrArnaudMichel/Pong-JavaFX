@@ -4,14 +4,13 @@ import javafx.scene.control.skin.TableHeaderRow;
 import javafx.scene.input.KeyCode;
 import pong.javafxpong.model.Side;
 
-public class Player extends Entity implements Runnable {
+public class Player extends Entity {
     private final Side side;
     public RacketMovementHandler racketMovementHandler;
     private Racket racket;
     private int score;
     private String name;
     public volatile boolean running = true;
-    public Thread thread;
 
     public Player(Racket racket, String name, Side side) {
         super(racket.getX(), racket.getY(), racket.getWidth(), racket.getHeight());
@@ -38,16 +37,14 @@ public class Player extends Entity implements Runnable {
         if (side == Side.LEFT) {
             racketMovementHandler = new RacketMovementHandler(KeyCode.Z, KeyCode.S);
         } else {
-            racketMovementHandler = new RacketMovementHandler(KeyCode.UP, KeyCode.DOWN);
+            racketMovementHandler = new RacketMovementHandler(KeyCode.O, KeyCode.L);
         }
-        thread = new Thread(this);
         start();
     }
 
     @Override
     public void start() {
         running = true;
-        thread.start();
     }
 
     @Override
@@ -69,21 +66,6 @@ public class Player extends Entity implements Runnable {
     @Override
     void reset(double x, double y) {
         this.racket.reset(x, y);
-    }
-
-    @Override
-    public void run() {
-        while (true) {
-            if (running) {
-                update();
-            }
-
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     public Racket getRacket() {

@@ -7,16 +7,13 @@ import pong.javafxpong.model.entity.CollisionDetector;
 import pong.javafxpong.view.GameOverView;
 import pong.javafxpong.view.GameView;
 
+import java.sql.SQLException;
+
 public class GameController {
     private GameView gameView;
     private Pong pong;
     private boolean gameStarted = false;
     private boolean isPaused;
-
-    public GameController(GameView gameView, Pong pong) {
-        this.gameView = gameView;
-        this.pong = pong;
-    }
 
     public GameController() {
         this.gameView = null;
@@ -31,14 +28,22 @@ public class GameController {
 
     public void startGame() {
         gameStarted = true;
+        System.out.println("Game started");
         Thread thread = new Thread(() -> {
-            while (gameStarted) {
-                update();
+            System.out.println("Game thread started");
+            while (true) {
+                if (Thread.interrupted()) {
+                    return;
+                }
                 gameView.update();
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                if (gameStarted) {
+                    update();
+
+                    try {
+                        Thread.sleep(10);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
@@ -46,6 +51,7 @@ public class GameController {
     }
 
     public void update() {
+        pong.update();
         if (CollisionDetector.checkCollision(pong.getBall(), pong.getPlayer1().getRacket()) ||
                 CollisionDetector.checkCollision(pong.getBall(), pong.getPlayer2().getRacket())) {
             pong.getBall().setDirectionX(-pong.getBall().getDirectionX());
@@ -60,12 +66,12 @@ public class GameController {
             pong.scorePlayer2();
             pong.reset();
             checkEndGame();
-            displayMessage("Player 2 scores!");
+            displayMessage( pong.getPlayer2().getName() + " scores!");
         } else if (pong.getBall().getX() >= 1000) {
             pong.scorePlayer1();
             pong.reset();
             checkEndGame();
-            displayMessage("Player 1 scores!");
+            displayMessage( pong.getPlayer1().getName() + " scores!");
         }
     }
 
@@ -94,13 +100,27 @@ public class GameController {
 
     public void pauseGame() {
         if (!gameStarted){
-            this.startGame();
+            pong.play();
+            gameStarted = true;
+            gameView.displayMessage("Game resumed");
+            return;
         }
         // Stop the game loop
         gameStarted = false;
         // Stop the ball and rackets
         assert pong != null;
         pong.stopGame();
+        gameView.displayMessage("Game paused");
     }
 
+    public void saveGame() {
+        GameSerializer.getInstance().saveGame(pong);
+        pauseGame();
+    }
+
+    public void saveGameToDatabase() throws SQLException {
+        DataBaseAdapter dataBaseAdapter = new DataBaseAdapter(pong);
+        dataBaseAdapter.saveGame();
+        pauseGame();
+    }
 }

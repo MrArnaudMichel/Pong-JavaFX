@@ -27,6 +27,7 @@ public class RacketMovementHandler {
      */
     public void handleKeyPressed(KeyEvent event) {
         keys.put(event.getCode(), true);
+        System.out.println("Key pressed: " + event.getCode());
     }
 
     /**

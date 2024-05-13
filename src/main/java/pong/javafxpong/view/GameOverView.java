@@ -22,9 +22,9 @@ public class GameOverView extends BorderPane {
         Label winnerLabel = new Label();
         winnerLabel.getStyleClass().add("score-winners");
         if (pong.getWinner() == 0) {
-            winnerLabel.setText("Player 1 wins!");
+            winnerLabel.setText(pong.getPlayer1().getName() + " wins!");
         } else {
-            winnerLabel.setText("Player 2 wins!");
+            winnerLabel.setText(pong.getPlayer2().getName() + " wins!");
         }
 
         VBox vBox = new VBox();

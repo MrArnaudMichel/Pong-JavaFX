@@ -28,6 +28,8 @@ public class GameSettingsView extends TabPane {
         saveButton.setOnAction(e -> {
             options.player1Name = player1Name.getText();
             options.player2Name = player2Name.getText();
+            pong.getPlayer1().setName(options.player1Name);
+            pong.getPlayer2().setName(options.player2Name);
         });
         playersSettings.add(saveButton, 0, 2);
         playersTab.setContent(playersSettings);

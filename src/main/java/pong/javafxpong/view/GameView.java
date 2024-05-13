@@ -4,14 +4,19 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import pong.javafxpong.controller.GameController;
 import pong.javafxpong.model.Pong;
 import pong.javafxpong.view.components.BallView;
 import pong.javafxpong.view.components.RacketView;
+
+import java.sql.SQLException;
 
 public class GameView extends BorderPane {
     private final Pong pong;
@@ -36,10 +41,42 @@ public class GameView extends BorderPane {
         score.setAlignment(Pos.CENTER);
         score.setStyle("-fx-font-size: 50px; -fx-text-fill: white; -fx-font-weight: bold;");
 
-        this.setBottom(score);
+        Button saveButton = new Button("Save Game [Serializable]");
+        saveButton.setOnAction(e -> {
+            gameController.saveGame();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Game Saved");
+            alert.setHeaderText(null);
+            alert.setContentText("Your game has been saved!");
+            alert.showAndWait();
+        });
+
+        Button saveButton2 = getButton();
+
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(score, saveButton, saveButton2);
+        vBox.setAlignment(Pos.CENTER);
         this.setCenter(stackPane);
+        this.setBottom(vBox);
         gameController.startGame();
 
+    }
+
+    private Button getButton() {
+        Button saveButton2 = new Button("Save Game [Database]");
+        saveButton2.setOnAction(e -> {
+            try {
+                gameController.saveGameToDatabase();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Game Saved");
+            alert.setHeaderText(null);
+            alert.setContentText("Your game has been saved!");
+            alert.showAndWait();
+        });
+        return saveButton2;
     }
 
     public void update() {
@@ -53,7 +90,7 @@ public class GameView extends BorderPane {
         label.setStyle("-fx-font-size: 50px; -fx-text-fill: white; -fx-font-weight: bold;");
         stackPane.getChildren().add(label);
         StackPane.setAlignment(label, Pos.TOP_CENTER);
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), e -> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.5), e -> {
             stackPane.getChildren().remove(label);
         }));
         timeline.play();

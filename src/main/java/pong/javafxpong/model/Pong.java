@@ -95,6 +95,10 @@ public class Pong {
         player2.stop();
     }
 
+    public void play() {
+        ball.play();
+    }
+
     public void scorePlayer1() {
         scores[0]++;
         player1.setScore(scores[0]);
@@ -151,5 +155,14 @@ public class Pong {
 
     public GameController getGameController() {
         return gameController;
+    }
+
+    public void updatePlayers() {
+        player1.update();
+        player2.update();
+    }
+
+    public void update() {
+        updatePlayers();
     }
 }

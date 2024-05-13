@@ -26,18 +26,20 @@ public class Ball extends Entity implements Runnable {
 
     @Override
     public void run() {
-        while (running) {
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        while (true) {
+            if (running) {
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
-            x += speed * directionX;
-            y += speed * directionY;
+                x += speed * directionX;
+                y += speed * directionY;
 
-            if (y <= 0 || y >= 600) {
-                directionY *= -1;
+                if (y <= 0 || y >= 600) {
+                    directionY *= -1;
+                }
             }
         }
     }
@@ -74,6 +76,10 @@ public class Ball extends Entity implements Runnable {
     @Override
     public void stop() {
         running = false;
+    }
+
+    public void play() {
+        running = true;
     }
 
     @Override
